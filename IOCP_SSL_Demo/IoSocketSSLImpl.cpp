@@ -75,7 +75,7 @@ int inst_index = -1;
 
 static BIO *BIO_new_iocp(IoSocketSSLImpl* inst)
 {
-	BIO_METHOD* m = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, "bio_iocp");
+	static BIO_METHOD* m = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, "bio_iocp");
 	//BIO_meth_set_create(m, bio_iocp_create);/* 可选 */
 	//BIO_meth_set_destroy(m, bio_iocp_destroy);/* 可选 */
 	BIO_meth_set_ctrl(m, bio_iocp_ctrl); /* 自定义 BIO 必须实现 */
